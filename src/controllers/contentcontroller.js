@@ -1,6 +1,4 @@
-export {contentController};
-
-const contentController = (function() {
+export const contentController = (function() {
     // function to fetch API
     const fetchWeatherAPI = async(url) => {
         // try / catch
@@ -24,7 +22,7 @@ const contentController = (function() {
 
         // await fetched data
         const data = await fetchWeatherAPI(url);
-        return data
+        return data;
     }
 
     return {fetchData}
