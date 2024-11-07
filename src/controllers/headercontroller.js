@@ -9,6 +9,9 @@ export const headerController = (function() {
         header.addEventListener('click', handleHeaderClick);
     }
 
+    // const 2 week object array
+    const biWeeklyArray = [];
+
     // handle clicks
     const handleHeaderClick = (e) => {
         if (e.target.classList.contains("magnify-icon")) {
@@ -22,10 +25,11 @@ export const headerController = (function() {
             contentController.fetchData(location)
             .then((data) => {
                 console.log(data);
-                createContent.loadWeatherInfo(data);
+                createContent.loadTodaysForecast(data);
+                createContent.loadSevenDayForecast(data.days);
             })
         }
     }
 
-    return {init};
+    return {init, biWeeklyArray};
 })();
