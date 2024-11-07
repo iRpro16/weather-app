@@ -87,7 +87,7 @@ export const createContent = (function() {
         headerController.biWeeklyArray = dataArray;
 
         // first 7 days
-        const firstWeekArray = headerController.biWeeklyArray.slice(0, 7);
+        const firstWeekArray = headerController.biWeeklyArray.slice(1, 8);
 
         // days weather div
         const daysWeatherDiv = document.createElement('div');
@@ -168,5 +168,18 @@ export const createContent = (function() {
         return dayCont;
     }
 
-    return {loadContent, loadTodaysForecast, loadSevenDayForecast};
+    // change weekly forecast
+    const changeSevenDay = (weeklyArray) => {
+        // get cont to change
+        const biWeeklyForecastDiv = document.querySelector(".bi-weekly-forecast");
+        biWeeklyForecastDiv.innerHTML = '';
+
+        weeklyArray.forEach((day) => {
+            let weatherDay = loadDay(day);
+            biWeeklyForecastDiv.append(weatherDay);
+        })
+
+    }
+
+    return {loadContent, loadTodaysForecast, loadSevenDayForecast, changeSevenDay};
 })()

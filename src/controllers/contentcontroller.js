@@ -1,4 +1,28 @@
+import { headerController } from "./headercontroller";
+import { createContent } from "../components/content";
+
 export const contentController = (function() {
+    // init
+    const init = () => {
+        const content = document.querySelector('.content');
+        content.addEventListener('click', handleContentClick);
+    }
+
+    // handle clicks
+    const handleContentClick = (e) => {
+        if (e.target.classList.contains('right-arrow')) {
+            // get second week
+            const secondWeekArray = headerController.biWeeklyArray.slice(-7);
+            createContent.changeSevenDay(secondWeekArray);
+        }
+
+        if (e.target.classList.contains('left-arrow')) {
+            // get first week
+            const firstWeekArray = headerController.biWeeklyArray.slice(1, 8);
+            createContent.changeSevenDay(firstWeekArray);
+        }
+    }
+    
     // function to fetch API
     const fetchWeatherAPI = async(url) => {
         // try / catch
@@ -25,5 +49,5 @@ export const contentController = (function() {
         return data;
     }
 
-    return {fetchData}
+    return {fetchData, init}
 })();

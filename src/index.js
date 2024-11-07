@@ -2,6 +2,7 @@ import "./styles.css";
 import { createHeader } from "./components/header";
 import { createContent } from "./components/content";
 import { headerController } from "./controllers/headercontroller";
+import { contentController } from "./controllers/contentcontroller";
 
 const loadPage = (function () {
     // load header & content
@@ -10,4 +11,5 @@ const loadPage = (function () {
 
     // load event listeners
     headerController.init();
+    contentController.init();
 })();
