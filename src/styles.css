@@ -16,24 +16,20 @@ body {
     background-color: #6daac2;
 }
 
-/* apply margin */
 .header > * {
     margin: 30px;
 }
 
-/* form placement */
 form {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* pointer */
 form > label {
     cursor: pointer;
 }
 
-/* textbox */
 form > input {
     width: clamp(300px, 450px, 500px);
     height: 35px;
@@ -41,10 +37,20 @@ form > input {
     border-radius: 10px;
 }
 
-/* hide submit */
 form input[type='submit'] {display: none;}
+
+/* ----------------------------------------------- */
 
 /* content */
 .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 90%;
+}
+
+.central-div {
+    width: clamp(600px, 100%, 1300px);
+    height: 90%;
+    border: 1px solid black;
 }
