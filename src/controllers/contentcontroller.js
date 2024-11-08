@@ -10,12 +10,14 @@ export const contentController = (function() {
 
     // handle clicks
     const handleContentClick = (e) => {
+        // handles second week
         if (e.target.classList.contains('right-arrow')) {
             // get second week
             const secondWeekArray = headerController.biWeeklyArray.slice(-7);
             createContent.changeSevenDay(secondWeekArray);
         }
 
+        // handles first week
         if (e.target.classList.contains('left-arrow')) {
             // get first week
             const firstWeekArray = headerController.biWeeklyArray.slice(1, 8);

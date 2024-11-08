@@ -28,7 +28,7 @@ const createHeader = (function () {
         const magnifySvg = document.createElement('img');
         magnifySvg.src = magnifyIcon;
         magnifySvg.classList.add('magnify-icon');
-        magnifySvg.style.width = "25px";
+        magnifySvg.style.width = "35px";
 
         // append
         label.append(submit, magnifySvg);

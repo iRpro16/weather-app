@@ -1,5 +1,6 @@
+import { loadToday } from "../components/content/loadtoday";
+import { loadSevenDay } from "../components/content/loadsevenday";
 import { contentController } from "./contentcontroller";
-import { createContent } from "../components/content";
 
 export const headerController = (function() {
     // init
@@ -19,16 +20,21 @@ export const headerController = (function() {
             e.preventDefault();
 
             // get location
-            const location = document.querySelector(".input-location").value;
+            const location = document.querySelector(".input-location");
 
             // get data
-            contentController.fetchData(location)
+            contentController.fetchData(location.value)
             .then((data) => {
-                createContent.loadTodaysForecast(data);
-                createContent.loadSevenDayForecast(data.days);
+                // load the forecasts and info
+                loadToday.loadTodaysForecast(data);
+                loadSevenDay.loadSevenDayForecast(data.days);
+                
                 // set array to array of days
                 headerController.biWeeklyArray = data.days;
             })
+
+            // clear textbox
+            location.value = "";
         }
     }
 
