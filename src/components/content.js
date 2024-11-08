@@ -83,11 +83,8 @@ export const createContent = (function() {
         // central div
         const centralDiv = document.querySelector(".central-div");
 
-        // store array
-        headerController.biWeeklyArray = dataArray;
-
         // first 7 days
-        const firstWeekArray = headerController.biWeeklyArray.slice(1, 8);
+        const firstWeekArray = dataArray.slice(1, 8);
 
         // days weather div
         const daysWeatherDiv = document.createElement('div');

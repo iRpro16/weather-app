@@ -10,7 +10,7 @@ export const headerController = (function() {
     }
 
     // const 2 week object array
-    const biWeeklyArray = [];
+    let biWeeklyArray = [];
 
     // handle clicks
     const handleHeaderClick = (e) => {
@@ -24,9 +24,10 @@ export const headerController = (function() {
             // get data
             contentController.fetchData(location)
             .then((data) => {
-                console.log(data);
                 createContent.loadTodaysForecast(data);
                 createContent.loadSevenDayForecast(data.days);
+                // set array to array of days
+                headerController.biWeeklyArray = data.days;
             })
         }
     }
