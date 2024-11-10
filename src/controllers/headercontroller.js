@@ -29,18 +29,20 @@ export const headerController = (function() {
             // get location
             const location = document.querySelector(".input-location");
 
-            // get data
-            contentController.fetchData(location.value)
-            .then((data) => {
-                // load the forecasts and info
-                loadToday.loadTodaysForecast(data);
-                loadSevenDay.loadSevenDayForecast(data.days);
-                loadInfo.loadForecastInfo(data);
-                
-                // set array to array of days
-                headerController.biWeeklyArray = data.days;
-            })
-
+            // only execute if not empty
+            if (location.value !== "") {
+                // get data
+                contentController.fetchData(location.value)
+                .then((data) => {
+                    // load the forecasts and info
+                    loadToday.loadTodaysForecast(data);
+                    loadSevenDay.loadSevenDayForecast(data.days);
+                    loadInfo.loadForecastInfo(data);
+                    
+                    // set array to array of days
+                    headerController.biWeeklyArray = data.days;
+                })
+            }
             // clear textbox
             location.value = "";
         }
