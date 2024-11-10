@@ -52,11 +52,11 @@ export const loadToday = (function() {
 
     // get icon based on condition
     const getIcon = (condition) => {
-        if (condition === "Partially cloudy") {return partiallyCloudy};
-        if (condition === "Clear") {return sunny};
-        if (condition === "Overcast") {return cloudy};
-        if (condition.includes("Rain")) {return rainy};
-        if (condition.includes("Snow")) {return snowy};
+        if (condition === "Partially cloudy") return partiallyCloudy;
+        if (condition === "Clear") return sunny;
+        if (condition === "Overcast") return cloudy;
+        if (condition.includes("Rain")) return rainy;
+        if (condition.includes("Snow")) return snowy;
     }
     return {loadTodaysForecast, getIcon};
 })();

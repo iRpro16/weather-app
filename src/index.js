@@ -5,6 +5,7 @@ import { headerController } from "./controllers/headercontroller";
 import { contentController } from "./controllers/contentcontroller";
 import { loadToday } from "./components/content/loadtoday";
 import { loadSevenDay } from "./components/content/loadsevenday";
+import { loadInfo } from "./components/content/loadinfo";
 
 const loadPage = (function () {
     // load page
@@ -19,6 +20,7 @@ const loadPage = (function () {
             console.log(data);
             loadToday.loadTodaysForecast(data)
             loadSevenDay.loadSevenDayForecast(data.days);
+            loadInfo.loadForecastInfo(data);
             // set array to data.days
             headerController.biWeeklyArray = data.days;
         });

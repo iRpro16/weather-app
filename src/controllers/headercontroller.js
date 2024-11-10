@@ -1,6 +1,7 @@
 import { loadToday } from "../components/content/loadtoday";
 import { loadSevenDay } from "../components/content/loadsevenday";
 import { contentController } from "./contentcontroller";
+import { loadInfo } from "../components/content/loadinfo";
 
 export const headerController = (function() {
     // init
@@ -28,6 +29,7 @@ export const headerController = (function() {
                 // load the forecasts and info
                 loadToday.loadTodaysForecast(data);
                 loadSevenDay.loadSevenDayForecast(data.days);
+                loadInfo.loadForecastInfo(data);
                 
                 // set array to array of days
                 headerController.biWeeklyArray = data.days;
