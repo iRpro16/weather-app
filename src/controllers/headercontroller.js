@@ -14,6 +14,12 @@ export const headerController = (function() {
     // const 2 week object array
     let biWeeklyArray = [];
 
+    // if button is toggles
+    let convBtnToggled = false;
+
+    // get button
+    const getConvBtn = () => convBtnToggled;
+
     // handle clicks
     const handleHeaderClick = (e) => {
         if (e.target.classList.contains("magnify-icon")) {
@@ -38,7 +44,39 @@ export const headerController = (function() {
             // clear textbox
             location.value = "";
         }
+
+        if (e.target.classList.contains('toggle-temp')) {
+            // get queries
+            let currentForecast = document.querySelector('.current-forecast');
+            let forecastDays = document.querySelectorAll('.forecast-day');
+
+            if (!convBtnToggled) {
+                // convert to true
+                convBtnToggled = true;
+
+                // switch innerText
+                e.target.innerText = '°F';
+            
+                // convert to °F
+                currentForecast.innerText = contentController.switchToFarenheight(currentForecast.innerText);
+                forecastDays.forEach(day => {
+                    day.innerText = contentController.switchToFarenheight(day.innerText);
+                })
+            } else if (convBtnToggled) {
+                // convert to false
+                convBtnToggled = false;
+
+                // switch innerText
+                e.target.innerText = '°C';
+
+                // convert to °C
+                currentForecast.innerText = contentController.switchToCelsius(currentForecast.innerText);
+                forecastDays.forEach(day =>{
+                    day.innerText = contentController.switchToCelsius(day.innerText);
+                })
+            }
+        }
     }
 
-    return {init, biWeeklyArray};
+    return {init, biWeeklyArray, getConvBtn};
 })();

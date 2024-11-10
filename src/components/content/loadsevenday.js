@@ -1,3 +1,5 @@
+import { contentController } from "../../controllers/contentcontroller";
+import { headerController } from "../../controllers/headercontroller";
 import { loadToday } from "./loadtoday";
 
 export const loadSevenDay = (function() {
@@ -67,7 +69,16 @@ export const loadSevenDay = (function() {
         // feels like
         const forecastDay = document.createElement('p');
         forecastDay.classList.add('forecast-day');
+        // set inner text to Celsius right away
         forecastDay.innerText = `${day.feelslike}°C`;
+        
+        // if button returns true
+        let convTrue = headerController.getConvBtn();
+        if (convTrue) {
+            forecastDay.innerText = contentController.switchToFarenheight(forecastDay.innerText);
+        } else {
+            forecastDay.innerText = `${day.feelslike}°C`;
+        }
 
         // datetime
         const dateTime = document.createElement('p');

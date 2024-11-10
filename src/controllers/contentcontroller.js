@@ -51,5 +51,27 @@ export const contentController = (function() {
         return data;
     }
 
-    return {fetchData, init}
+    // function for celsius to farenheight
+    const switchToFarenheight = (tempCelsius) => {
+        // remove °C text and convert to integer
+        const preprocessCelsius = parseFloat(tempCelsius.replace("°C", ""));
+
+        // convert to farenheight
+        const tempFarenheight = `${((preprocessCelsius * 9/5) + 32).toFixed(1)}°F`;
+        
+        return tempFarenheight;
+    }
+
+    // function for farenheight to celsius
+    const switchToCelsius = (tempFarenheight) => {
+        // remove °F text and convert to integer
+        const preprocessFarenheight = parseFloat(tempFarenheight.replace("°F", ""));
+
+        // convert to celsius
+        const tempCelsius = `${((preprocessFarenheight - 32) * (5/9)).toFixed(1)}°C`;
+
+        return tempCelsius;
+    }
+
+    return {fetchData, init, switchToFarenheight, switchToCelsius};
 })();

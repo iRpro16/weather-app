@@ -37,7 +37,7 @@ const createHeader = (function () {
         // toggle C/F
         const toggleTemp = document.createElement('button');
         toggleTemp.classList.add('toggle-temp');
-        toggleTemp.innerHTML = 'toggle';
+        toggleTemp.innerHTML = '°C';
         header.append(headerTitle, form, toggleTemp);
     }
     return {loadHeader};

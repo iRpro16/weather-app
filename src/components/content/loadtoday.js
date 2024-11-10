@@ -3,6 +3,8 @@ import cloudy from "/src/assets/svgs/weather-cloudy.svg";
 import sunny from "/src/assets/svgs/weather-sunny.svg";
 import rainy from "/src/assets/svgs/weather-rainy.svg";
 import snowy from "/src/assets/svgs/weather-snowy.svg";
+import { headerController } from "../../controllers/headercontroller";
+import { contentController } from "../../controllers/contentcontroller";
 
 export const loadToday = (function() {
     // load todays forecast
@@ -37,7 +39,16 @@ export const loadToday = (function() {
         // current forecast
         const currentForecast = document.createElement('p');
         currentForecast.classList.add('current-forecast');
+        // set inner text to Celsius right away
         currentForecast.innerHTML = `${data.currentConditions.feelslike}°C`;
+
+        // get button
+        let convTrue = headerController.getConvBtn();
+        if (convTrue) {
+            currentForecast.innerText = contentController.switchToFarenheight(currentForecast.innerText);
+        } else {
+            currentForecast.innerText = `${data.currentConditions.feelslike}°C`;
+        }
 
         // forecast div
         const forecastDiv = document.createElement('div');
